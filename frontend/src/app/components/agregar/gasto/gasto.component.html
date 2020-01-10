@@ -1,0 +1,83 @@
+<h1>Ingresar un nuevo gasto</h1>
+
+<div class="container">
+  <div class="row">
+      <div class="col-8">
+          <form [formGroup] = "form" (ngSubmit)="nuevoGasto()">
+              <div class="form-group">
+                <span>Monto</span>
+                  <input type="number" class="form-control" name="monto" placeholder="monto" formControlName="monto">
+                  <span *ngIf= "form.get('monto').status != 'VALID' && form.get('monto').touched; else monto" class="text-danger">No cumple con los requisitos</span>
+
+              </div>
+            
+              <div class="form-group">
+                <span>Moneda</span>
+                <br>
+                <select class="custom-select" #m (change)="elegirMoneda(m.value)" formControlName='moneda'>
+                  <option value=""  disabled>Elija la moneda</option>
+                  <option *ngFor="let item of moneda" value="{{item.id_m}}">{{item.moneda}}</option>
+             </select>
+
+              </div>
+
+              <div class="form-group">
+                <span>Categoría</span>
+                <br>
+                <select class="custom-select" #c (change)="elegirCategoriaGastos(c.value)" formControlName='categoria'>
+                  <option value="" disabled>Elija la categoría</option>
+                  <option *ngFor="let item of categoria" value="{{item.id_cg}}">{{item.categoria_g}}</option>
+               </select>
+
+              </div>
+
+              <div class="form-group">
+                <span>Pagado</span>
+                <br>
+                <select class="custom-select" #p (change)="pagado(p.value)" formControlName='pagado'>
+                  <option value="" disabled>¿Está pago el gasto?</option>
+                  <option value="1">Sí</option>
+                  <option value="0">No</option>
+               </select>
+
+              </div>    
+
+              <div class="form-group">
+                <span>Detalle</span>
+                  <input type="text" class="form-control" name="detalle" placeholder="detalle" formControlName="detalle">
+
+                  <span class="text-danger" *ngIf="form.get('detalle').status != 'VALID' && form.get('detalle').touched; else detalle">Detalle inválido</span>
+              </div>   
+
+              <div class="form-group">
+                <span>Vencimiento</span>
+                  <input type="date" class="form-control" name="vencimiento" placeholder="vencimiento" formControlName="vencimiento">
+                  <span *ngIf= "form.get('vencimiento').status != 'VALID' && form.get('vencimiento').touched; else vencimiento" class="text-danger">No cumple con los requisitos</span>
+
+              </div>
+
+              <div class="form-group">
+                <span>Entidad</span>
+                <input type="text" class="form-control" name="banco" placeholder="banco" formControlName="banco">
+                <span *ngIf= "form.get('banco').status != 'VALID' && form.get('banco').touched; else banco" class="text-danger">No cumple con los requisitos</span>
+
+            </div>
+
+            <div class="form-group">
+                <span>Fecha</span>
+                  <input type="date" class="form-control" name="fecha" formControlName="fecha">
+                  <span *ngIf= "form.get('fecha').status != 'VALID' && form.get('fecha').touched; else fecha" class="text-danger">No cumple con los requisitos</span>
+
+              </div>
+             
+              <button type="submit" [disabled]="form.invalid" class="btn btn-success btn-block">Agregar gasto</button>
+
+              <ng-template #sinError>
+                  <span></span>
+              </ng-template>
+          </form>
+      </div>
+  </div>
+</div>
+
+<div class="backArrow" (click)="alHome()"><i class="fas fa-arrow-circle-left"></i></div>

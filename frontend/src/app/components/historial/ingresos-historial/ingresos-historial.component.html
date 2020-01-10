@@ -1,0 +1,18 @@
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th  scope="col" *ngFor="let titulo of titulos">{{titulo}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- el tr recorre el array con objetos (cada transaccion del usuario) -->
+          <tr *ngFor="let fila of valores"> 
+            <!-- el td recorre los arrays con los valores e imprime cada uno -->
+            <td *ngFor="let columna of fila">{{columna}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+</div>

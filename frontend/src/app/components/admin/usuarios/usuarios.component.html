@@ -1,0 +1,55 @@
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th  scope="col" *ngFor="let titulo of titulos">{{titulo}}</th>
+            <th>Editar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- el tr recorre el array con objetos (cada transaccion del usuario) -->
+          <tr *ngFor="let fila of valores; let i = index"> 
+            <!-- el td recorre los arrays con los valores e imprime cada uno -->
+            <td *ngFor="let columna of fila">{{columna}}</td>
+            <td (click)="open(content, i)"> <i class="far fa-edit"></i> </td>
+          </tr>
+            
+        </tbody>
+      </table>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Editar Rol</h4>
+
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      
+      <div class="modal-body">
+        
+       <form [formGroup] = "form" (ngSubmit)="editarRol(modal)">
+
+            <div class="form-group">
+ 
+              <select class="custom-select" #c (change)="elegirRol(c.value)"  formControlName="role">
+                <option value="" disabled>Elija el rol</option>
+                <option value="admin">Administrador</option>
+                <option value="user">Usuario</option>
+             </select>
+
+            </div>
+
+            
+           
+            <button type="submit" [disabled]="form.invalid" class="btn btn-success btn-block">Aplicar cambio</button>
+
+            <ng-template #sinError>
+                <span></span>
+            </ng-template>
+        </form>
+        </div>
+
+</ng-template>

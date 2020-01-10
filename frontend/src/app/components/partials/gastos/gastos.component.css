@@ -1,0 +1,18 @@
+span {
+    font-size: large;
+    color: aquamarine;
+}
+
+.simbols {
+    display: flex;
+}
+
+.simbols app-modal-component {
+    height: 50px;
+}
+
+.simbols button {
+    height: 100%;
+    border-radius: 50%;
+    margin-right: 10px;
+}

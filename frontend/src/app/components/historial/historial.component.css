@@ -1,0 +1,40 @@
+.container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+h2 {
+    text-align: center;
+    width: 100%;
+}
+
+.btn-group {
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+.btn-secondary {
+    background-color: #ace8c4;
+    border-color: #ace8c4fc;
+
+}
+
+.btn-secondary:focus {
+    color: #fff;
+    background-color: #88cca1;
+    border-color: #88cca1;
+    box-shadow: none;
+}
+
+.backArrow {
+    color: #ace8c4;
+    font-size: 35px;
+    padding: 60px 30px;
+    width: 100%;
+}
+
+.backArrow i{
+    cursor: pointer;
+}

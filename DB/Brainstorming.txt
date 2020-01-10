@@ -1,0 +1,59 @@
+Administrador de gastos
+
+Ingresos
+
+Gastos mensuales = impuestos y servicios, alquiler y expensas, cochera, salidas, peluquería, supermercado, educación, tarjetas de crédito (con detalle y vencimiento)
+
+Próximos vencimientos
+
+Agregar categoría
+
+Cotización del dólar del día
+
+Ahorro = cuentas proyectos
+
+Correo resumen del mes
+
+----------------------------------------------
+
+Base de datos
+
+Usuarios OK
+
+id_u | nombre_u | email_u | contraseña_u
+
+Gastos
+
+id_g | id_usuario_g | monto_g | id_categoria_g | detalle_g | vencimiento_g | banco_g
+
+Categorías__gastos
+
+id_cg | categoria_cg
+
+Categorias_g_usuarios
+
+id_cu | id_u_cu | categoria_cu
+
+Ingresos
+
+Id_i | id_usuario_i | monto_i | id_categoría_i
+
+Categorias_ingresos
+id_ci | categoria_i
+
+Categorias_i_usuarios
+
+id_ci | id_u_ci | descripcion_ci
+
+Ahorro e inversiones
+
+id_a | id_usuario_a | monto_a | id_cp_a
+
+Cuenta proyecto
+
+id_cp | id_usuario_cq | objetivo_cp
+
+
+
+
+

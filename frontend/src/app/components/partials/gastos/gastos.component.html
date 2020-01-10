@@ -1,0 +1,17 @@
+<h2>Gastos</h2>
+
+<div *ngIf = "gastosMes.length > 0; else noHubo">
+    <p *ngIf= "suma != undefined">{{suma.simbolo}} {{suma.monto}}</p>
+    <p *ngIf= "sumaDolares != undefined">{{sumaDolares.simbolo}} {{sumaDolares.monto}}</p>
+</div>
+
+<ng-template #noHubo>
+    <p>{{mensaje}}</p>
+</ng-template>
+
+
+<div class="simbols">
+<app-modal-component [componente]="[nombreComponente, gastosMes, titulos, mensaje]"></app-modal-component>
+<button (click)="agregarGasto()" class="boton-home btn btn-lg btn-outline-primary"><i class="fas fa-plus"></i></button>
+<button [routerLink]="['/historial']" class="boton-home btn btn-lg btn-outline-primary"><i class="fa fa-history" aria-hidden="true"></i></button>   
+</div>

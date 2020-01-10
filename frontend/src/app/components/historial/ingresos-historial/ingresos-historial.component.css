@@ -1,0 +1,13 @@
+.btn-secondary {
+    width: 100%;
+    background-color: #ace8c4;
+    border-color: #ace8c4fc;
+}
+
+.btn-secondary:focus {
+    color: #fff;
+    background-color: #88cca1;
+    border-color: #88cca1;
+    box-shadow: none;
+}
+

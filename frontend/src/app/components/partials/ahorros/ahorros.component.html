@@ -1,0 +1,67 @@
+<h2>Ahorros</h2>
+
+<div *ngIf = "ahorrosDelMes.length > 0; else noHubo">
+    <p *ngIf= "sumaMonto != undefined">{{sumaMonto.simbolo}} {{sumaMonto.monto}}</p>
+    <p *ngIf= "sumaDolares != undefined">{{sumaDolares.simbolo}} {{sumaDolares.monto}}</p>
+</div>
+
+<ng-template #noHubo>
+    <p>{{mensaje}}</p>
+</ng-template>
+
+
+
+
+<div class="simbols">
+<app-modal-component [componente]="[nombreComponente, ahorrosDelMes, titulos]"></app-modal-component>
+<button (click)="agregarAhorro()" class="boton-home btn btn-lg btn-outline-primary"><i class="fas fa-plus"></i></button>
+<button [routerLink]="['/historial']" class="boton-home btn btn-lg btn-outline-primary"><i class="fa fa-history" aria-hidden="true"></i></button>   
+</div>
+
+<br>
+
+
+
+<div>
+    <h6>Mi objetivo en pesos: {{cPPesos ? cPPesos.objetivo : "Todavía no creaste tu cuenta proyecto en pesos"}}</h6>
+    <h6>Mi objetivo en dólares: {{cPDolares ? cPDolares.objetivo : "Todavía no creaste tu cuenta proyecto en dólares"}}</h6>
+</div>
+
+<br>
+
+<div *ngIf="contar < 3">
+    <div class="col-6">
+        <form [formGroup]="form" (ngSubmit)="nuevaCuentaProyecto()">
+            <div class="form-group">
+                <span>Objetivo</span>
+                <input type="number" class="form-control" name="objetivo" placeholder="¿Cuál es tu objetivo?" formControlName="objetivo">
+                <span *ngIf= "form.get('objetivo').status != 'VALID' && form.get('objetivo').touched; else sinError" class="text-danger">No cumple con los requisitos</span>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <span>Moneda</span>
+                <select class="custom-select" #m (change)="elegirMoneda(m.value)" formControlName='moneda'>
+                <option value="" disabled>Elegí la moneda</option>
+                <option *ngFor="let item of moneda" value="{{item.id_m}}">{{item.moneda}}</option>
+                </select>
+                {{mensaje2}}
+
+            </div>
+
+                <button type="submit" [disabled]="mensaje2 != '' || form.invalid" class="btn btn-success btn-block">Creá tu cuenta proyecto</button>
+                <ng-template #sinError>
+                    <span></span>
+                </ng-template>
+            </form>
+        </div>
+    </div>
+
+            
+    
+        
+
+
+
+

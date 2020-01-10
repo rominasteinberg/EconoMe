@@ -1,0 +1,40 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Detalle de {{nombreComponente}}</h4>
+        <!-- <button type="button" class="nuevo" aria_label="New "{{nombreComponente}} routerLink="/nuevoIngreso">
+          <i class="fas fa-plus-circle"></i></button> -->
+          <!-- <i class="fas fa-plus-circle"></i> -->
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      
+      <div class="modal-body">
+        <table class="table table-responsive table-bordered" *ngIf = 'valores.length > 0; else noHubo'>
+          <thead >
+            <tr>
+              <th  *ngFor="let titulo of componente[2]">{{titulo}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- el tr recorre el array con objetos (cada transaccion del usuario) -->
+            <tr *ngFor="let fila of valores"> 
+              <!-- el td recorre los arrays con los valores e imprime cada uno -->
+              <td *ngFor="let columna of fila">{{columna}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <ng-template #noHubo>
+          <p>No hubo {{nombreComponente}} en este mes.</p>
+        </ng-template>
+      </div> 
+
+    </ng-template>
+  
+  <button class="boton-home btn btn-lg btn-outline-primary" (click)="open(content)"><i class="fas fa-list-ul"></i></button>
+  
+  <hr>
+  
+  <pre>{{closeResult}}</pre>

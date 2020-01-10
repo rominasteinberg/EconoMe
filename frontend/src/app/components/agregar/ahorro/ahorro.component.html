@@ -1,0 +1,41 @@
+<h1>Ingresar un nuevo ahorro</h1>
+
+<div class="container">
+  <div class="row">
+      <div class="col-8">
+          <form [formGroup] = "form" (ngSubmit)="nuevoAhorro()">
+              <div class="form-group">
+                <span>Monto</span>
+                  <input type="number" class="form-control" name="monto" placeholder="monto" formControlName="monto">
+                  <span *ngIf= "form.get('monto').status != 'VALID' && form.get('monto').touched; else monto" class="text-danger">No cumple con los requisitos</span>
+
+              </div>
+            
+              <div class="form-group">
+                <span>Moneda</span>
+                <br>
+                <select class="custom-select" #m (change)="elegirMoneda(m.value)" formControlName='moneda'>
+                  <option value=""  disabled>Elija la moneda</option>
+                  <option *ngFor="let item of moneda" value="{{item.id_m}}">{{item.moneda}}</option>
+             </select>
+
+              </div>
+
+            <div class="form-group">
+                <span>Fecha</span>
+                  <input type="date" class="form-control" name="fecha" formControlName="fecha">
+                  <span *ngIf= "form.get('fecha').status != 'VALID' && form.get('fecha').touched; else fecha" class="text-danger">No cumple con los requisitos</span>
+
+              </div>
+             
+              <button type="submit" [disabled]="form.invalid" class="btn btn-success btn-block">Agregar ahorro</button>
+
+              <ng-template #sinError>
+                  <span></span>
+              </ng-template>
+          </form>
+      </div>
+  </div>
+</div>
+
+<div class="backArrow" (click)="alHome()"><i class="fas fa-arrow-circle-left"></i></div>

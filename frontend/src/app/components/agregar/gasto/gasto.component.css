@@ -1,0 +1,9 @@
+.backArrow {
+    color: #ace8c4;
+    font-size: 35px;
+    padding: 60px 30px;
+}
+
+.backArrow i{
+    cursor: pointer;
+}
